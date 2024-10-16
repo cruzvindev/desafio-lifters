@@ -1,0 +1,17 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="user">
+        <createTable tableName="cargos">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)"/>
+            <column name="criado_em" type="TIMESTAMP"/>
+            <column name="alterado_em" type="TIMESTAMP"/>
+            <column name="deletado_em" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

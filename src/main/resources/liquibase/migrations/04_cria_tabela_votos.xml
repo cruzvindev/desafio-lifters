@@ -1,0 +1,32 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="4" author="user">
+        <createTable tableName="votos">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="id_candidato" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_eleitor" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data" type="TIMESTAMP"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="votos"
+                                 baseColumnNames="id_candidato"
+                                 constraintName="fk_votos_candidato"
+                                 referencedTableName="candidatos"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="votos"
+                                 baseColumnNames="id_eleitor"
+                                 constraintName="fk_votos_eleitor"
+                                 referencedTableName="eleitores"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

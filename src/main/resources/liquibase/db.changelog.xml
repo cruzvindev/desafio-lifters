@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Referenciando os arquivos de migração -->
+    <include file="liquibase/migrations/01_cria_tabela_cargos.xml"/>
+    <include file="liquibase/migrations/02_cria_tabela_candidatos.xml"/>
+    <include file="liquibase/migrations/03_cria_tabela_eleitores.xml"/>
+    <include file="liquibase/migrations/04_cria_tabela_votos.xml"/>
+
+</databaseChangeLog>
+
