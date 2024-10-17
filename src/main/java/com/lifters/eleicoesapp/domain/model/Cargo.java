@@ -15,7 +15,7 @@ import java.util.HashSet;
 @Data
 @Entity
 @Table(name = "Cargos")
-public class Cargo extends EntidadeBase implements Serializable {
+public class Cargo extends EntidadeBase  {
 
     @OneToMany(mappedBy = "cargo", cascade = CascadeType.ALL)
     private Collection<Candidato> candidatos = new HashSet<Candidato>();

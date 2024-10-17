@@ -12,7 +12,7 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Data
 @Entity
-public class Voto implements Serializable {
+public class Voto  {
     @Id
     private UUID id;
 

@@ -5,11 +5,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
-public class CandidatosDto {
+public class CandidatosDto implements Serializable {
 
         @Schema(example = "7a07292a-c727-499e-bfc3-0509e9876562")
         @JsonProperty("candidatoId")

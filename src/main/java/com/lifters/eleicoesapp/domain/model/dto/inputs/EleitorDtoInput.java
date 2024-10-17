@@ -7,9 +7,11 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-public class EleitorDtoInput {
+public class EleitorDtoInput  {
 
     @Schema(example = "Lucas Santos")
     @NotBlank

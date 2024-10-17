@@ -6,30 +6,21 @@ networks:
 
 services:
   eleicoes-api-postgresql:
-    image: bitnami/postgresql:17.0.0
+    image: postgres:alpine
+    container_name: postgres-container
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: eleicoes
     ports:
       - "5433:5432"
-    volumes:
-      - ./sql:/docker-entrypoint-initdb.d
     networks:
       - eleicoes-api-network
 
   eleicoes-api-redis:
     image: redis:6.2.1-alpine
+    container_name: redis-container
+    ports:
+      - "6379:6379"
     networks:
       - eleicoes-api-network
-
-  eleicoes-api:
-    build: .
-    command: ["/wait-for-it.sh", "eleicoes-api-postgresql:5432", "-t", "40", "--", "java", "-jar", "api.jar"]
-    environment:
-      DB_HOST: eleicoes-api-postgresql
-      SPRING_SESSION_STORE_TYPE: redis
-      SPRING_REDIS_HOST: eleicoes-api-redis
-    networks:
-      - eleicoes-api-network
-    depends_on:
-      - eleicoes-api-postgresql
-      - eleicoes-api-redis

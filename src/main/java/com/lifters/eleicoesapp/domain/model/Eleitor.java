@@ -11,7 +11,7 @@ import java.math.BigInteger;
 @Data
 @Entity
 @Table(name = "eleitores")
-public class Eleitor extends EntidadeBase implements Serializable {
+public class Eleitor extends EntidadeBase {
     private BigInteger cpf;
 
     @OneToOne(mappedBy = "eleitor", cascade = CascadeType.ALL)

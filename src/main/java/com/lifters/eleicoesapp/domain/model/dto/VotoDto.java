@@ -4,11 +4,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
-public class VotoDto {
+public class VotoDto implements Serializable {
 
     @Schema(example = "7835de27-31f0-4d27-8c29-c399e25f208c")
     private UUID idCandidato;

@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "Candidatos")
-public class Candidato extends EntidadeBase implements Serializable {
+public class Candidato extends EntidadeBase {
 
     private Integer numero;
     private String legenda;

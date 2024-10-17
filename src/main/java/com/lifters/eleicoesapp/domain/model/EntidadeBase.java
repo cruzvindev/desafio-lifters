@@ -15,7 +15,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class EntidadeBase implements Serializable {
+public abstract class EntidadeBase {
     @Id
     private UUID id;
     private String nome;

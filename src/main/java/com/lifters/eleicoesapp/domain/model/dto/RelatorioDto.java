@@ -4,11 +4,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
-public class RelatorioDto {
+public class RelatorioDto implements Serializable {
 
     private UUID idCargo;
     private String nomeCargo;
