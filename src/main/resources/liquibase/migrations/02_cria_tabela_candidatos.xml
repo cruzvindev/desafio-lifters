@@ -19,6 +19,11 @@
             <column name="deletado_em" type="TIMESTAMP"/>
         </createTable>
 
+        <addUniqueConstraint
+                tableName="candidatos"
+                columnNames="numero"
+                constraintName="unique_numero_candidatos" />
+
         <addForeignKeyConstraint baseTableName="candidatos"
                                  baseColumnNames="id_cargo"
                                  constraintName="fk_candidatos_cargo"

@@ -1,7 +1,8 @@
-package com.lifters.eleicoesapp.domain.model.dto;
+package com.lifters.eleicoesapp.domain.model.dto.inputs;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,13 +10,10 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class CargoDto {
+public class CargoDtoInput {
 
-    @Schema(example = "e0379a7a-042a-4112-a117-05d68792ad63")
-    @JsonProperty("cargoId")
-    private UUID id;
-
-    @Schema(example = "PRESIDENTE")
+    @Schema(example = "PREFEITO")
+    @NotBlank
     @JsonProperty("nomeCargo")
     private String nome;
 }

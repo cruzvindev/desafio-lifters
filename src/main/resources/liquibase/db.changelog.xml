@@ -10,6 +10,7 @@
     <include file="liquibase/migrations/02_cria_tabela_candidatos.xml"/>
     <include file="liquibase/migrations/03_cria_tabela_eleitores.xml"/>
     <include file="liquibase/migrations/04_cria_tabela_votos.xml"/>
+    <include file="liquibase/migrations/05_insere_dados_banco.xml"/>
 
 </databaseChangeLog>
 

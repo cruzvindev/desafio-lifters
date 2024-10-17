@@ -1,0 +1,12 @@
+ooooo        ooooo oooooooooooo ooooooooooooo oooooooooooo ooooooooo.    .oooooo..o
+`888'        `888' `888'     `8 8'   888   `8 `888'     `8 `888   `Y88. d8P'    `Y8
+ 888          888   888              888       888          888   .d88' Y88bo.
+ 888          888   888oooo8         888       888oooo8     888ooo88P'   `"Y8888o.
+ 888          888   888    "         888       888    "     888`88b.         `"Y88b
+ 888       o  888   888              888       888       o  888  `88b.  oo     .d8P
+o888ooooood8 o888o o888o            o888o     o888ooooood8 o888o  o888o 8""88888P'
+
+
+
+${application.title} ${application.version}
+Powered by Spring Boot ${spring-boot.version}

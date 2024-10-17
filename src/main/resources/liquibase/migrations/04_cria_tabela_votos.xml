@@ -4,7 +4,7 @@
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet id="4" author="user">
-        <createTable tableName="votos">
+        <createTable tableName="voto">
             <column name="id" type="UUID">
                 <constraints primaryKey="true"/>
             </column>
@@ -17,16 +17,25 @@
             <column name="data" type="TIMESTAMP"/>
         </createTable>
 
-        <addForeignKeyConstraint baseTableName="votos"
+        <addForeignKeyConstraint baseTableName="voto"
                                  baseColumnNames="id_candidato"
                                  constraintName="fk_votos_candidato"
                                  referencedTableName="candidatos"
                                  referencedColumnNames="id"/>
 
-        <addForeignKeyConstraint baseTableName="votos"
+        <addForeignKeyConstraint baseTableName="voto"
                                  baseColumnNames="id_eleitor"
                                  constraintName="fk_votos_eleitor"
                                  referencedTableName="eleitores"
                                  referencedColumnNames="id"/>
+
+        <createIndex indexName="idx_votos_id_candidato" tableName="voto">
+            <column name="id_candidato"/>
+        </createIndex>
+
+        <createIndex indexName="idx_votos_id_eleitor" tableName="voto">
+            <column name="id_eleitor"/>
+        </createIndex>
+
     </changeSet>
 </databaseChangeLog>

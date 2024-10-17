@@ -1,29 +1,82 @@
 package com.lifters.eleicoesapp.api.v1.controllers;
 
-import com.lifters.eleicoesapp.api.v1.dtobuilders.CandidatoDtoBuilder;
+import com.lifters.eleicoesapp.api.v1.controllers.openapi.CandidatosControllerOpenApi;
+import com.lifters.eleicoesapp.api.v1.dtobuilders.CandidatoDtoConversor;
 import com.lifters.eleicoesapp.domain.model.dto.CandidatosDto;
+import com.lifters.eleicoesapp.domain.model.dto.RelatorioDto;
+import com.lifters.eleicoesapp.domain.model.dto.inputs.CandidatoDtoInput;
 import com.lifters.eleicoesapp.domain.service.CandidatoService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.lifters.eleicoesapp.domain.service.CargoService;
+import com.lifters.eleicoesapp.domain.service.VotoService;
 
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/v1/candidatos")
-public class CandidatosController {
+public class CandidatosController implements CandidatosControllerOpenApi {
 
     @Autowired
     private CandidatoService candidatoService;
 
     @Autowired
-    private CandidatoDtoBuilder candidatoBuilder;
+    private CandidatoDtoConversor candidatoMapper;
+
+    @Autowired
+    private VotoService votoService;
+
+    @Autowired
+    private CargoService cargoService;
 
     @GetMapping("/{id}")
     public CandidatosDto buscarPorId(@PathVariable("id") UUID candidatoId){
         var candidatoBuscado = candidatoService.buscarCandidato(candidatoId);
-        return candidatoBuilder.converteParaModelo(candidatoBuscado);
+        return candidatoMapper.converteParaModelo(candidatoBuscado);
     }
+
+    @GetMapping("/listar")
+    @Cacheable(value="candidatos")
+    public Collection<CandidatosDto> listar(){
+        var todosCandidatos = candidatoService.listarCandidatos();
+        return candidatoMapper.converteParaColecaoModelo(todosCandidatos);
+    }
+
+    @Cacheable(value = "relatorio")
+    @GetMapping("/relatorio")
+    public List<RelatorioDto> getRelatorio() {
+        return votoService.gerarRelatorio();
+    }
+
+    @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
+    public CandidatosDto cadastrar(@RequestBody @Valid CandidatoDtoInput candidatoDtoInput){
+        var candidatoSalvo = candidatoMapper.converteParaModeloDominio(candidatoDtoInput);
+        candidatoSalvo = candidatoService.salvar(candidatoSalvo);
+        return candidatoMapper.converteParaModelo(candidatoSalvo);
+    }
+
+    @PutMapping("/{id}")
+    public CandidatosDto atualizar(@PathVariable("id") UUID candidatoId, @Valid @RequestBody CandidatoDtoInput candidatoDto) {
+        var candidatoBuscado = candidatoService.buscarCandidato(candidatoId);
+
+        var nomeCargo = candidatoDto.getCargo().getNome().toUpperCase();
+        cargoService.buscarCargoPorNome(nomeCargo);
+        candidatoMapper.copiaParaObjetoDominio(candidatoDto, candidatoBuscado);
+
+        candidatoBuscado = candidatoService.salvar(candidatoBuscado);
+        return candidatoMapper.converteParaModelo(candidatoBuscado);
+    }
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletar(@PathVariable("id") UUID candidatoId){
+        candidatoService.excluir(candidatoId);
+    }
+
 }

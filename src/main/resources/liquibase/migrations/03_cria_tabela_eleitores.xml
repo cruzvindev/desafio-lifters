@@ -9,7 +9,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="nome" type="VARCHAR(255)"/>
-            <column name="CPF" type="INT"/>
+            <column name="CPF" type="BIGINT(11)"/>
             <column name="criado_em" type="TIMESTAMP"/>
             <column name="alterado_em" type="TIMESTAMP"/>
             <column name="deletado_em" type="TIMESTAMP"/>

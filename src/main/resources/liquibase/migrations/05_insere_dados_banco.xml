@@ -1,0 +1,70 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="5" author="Vinicius Cruz">
+        <sql>
+            INSERT INTO cargos (
+                id, nome, criado_em, alterado_em, deletado_em
+            ) VALUES (
+                         '72a46901-8741-4e6a-96fe-22f514a492da',
+                         'GOVERNADOR',
+                         '2024-10-17 08:30:00',
+                         '2024-10-17 08:30:00',
+                         NULL
+                     ),
+                     (
+                         '88ec4a38-5b60-4eb0-a0a0-74d102e59591',
+                         'PRESIDENTE',
+                         '2024-10-17 08:30:00',
+                         '2024-10-17 08:30:00',
+                         NULL
+                     );
+
+
+            INSERT INTO eleitores(
+                id, nome, cpf, criado_em, alterado_em, deletado_em
+            ) VALUES
+                  ('e0f8b7d4-5a67-4c9b-9d56-2dfc58c5f79d', 'Maria Oliveira', 12345678909, '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('b87a6e7c-0e44-4721-bc42-839df24b1dbb', 'Carlos Pereira', 98765432100, '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('f78b2d57-5435-4e57-bff2-1f052ec03ae8', 'Ana Costa', 11122233344, '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('a4e8f896-bd97-4d77-9e6f-8e61b45b85f6', 'Luiz Santos', 55566677788, '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('c56e0795-dc4a-4cde-8ef3-c0f38d2ef97a', 'Fernanda Lima', 99988877766, '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('baf22c7b-1b6d-4d67-8cd9-9e9a5117b963', 'Mariana Almeida', 44455566677, '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('f1d0e4e0-5e47-4de1-bcc6-370b0edac20b', 'Paulo Sousa', 22233344455, '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('f4c8aefb-5bc2-4381-8e2e-57b05ebfbf3e', 'Roberto Martins', 12345678901, '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('c2a16e0f-6e6f-4f58-9bce-d6f8f18e0c2b', 'Juliana Costa', 23456789012, '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('e145b6d5-8cc1-4c89-aaff-2fc7f5b56f93', 'Fernando Almeida', 34567890123, '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('f87a073e-6a69-41d9-a489-0e0c6884dc68', 'Tatiane Souza', 45678901234, '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('ab23c8fe-8815-4b92-b35a-319168f1445b', 'Vinícius Lima', 56789012345, '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL);
+
+            INSERT INTO candidatos(
+                id, nome, numero, legenda, id_cargo, criado_em, alterado_em, deletado_em
+            ) VALUES
+                  ('0e200f1b-4e0d-4666-8279-f56905bc87f1', 'Pedro Ribeiro', 22, 'Avança Brasil', '88ec4a38-5b60-4eb0-a0a0-74d102e59591', '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('db065728-6402-490f-9fb8-d4749f547fc9', 'Rafael Sousa', 18, 'Vamos Juntos', '88ec4a38-5b60-4eb0-a0a0-74d102e59591', '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('0c1cae83-125a-4d00-a1b9-e43bb694c325', 'Amanda Ferreira', 10, 'Pela Liberdade', '88ec4a38-5b60-4eb0-a0a0-74d102e59591', '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('de8cf400-3acf-4a71-9a0a-c655b63e7a29', 'João Santos', 45, 'Muda Brasil', '72a46901-8741-4e6a-96fe-22f514a492da', '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('58eb6c39-7c36-4340-bc7f-d81fb71a1c3d', 'Luana Oliveira', 40, 'Pelas Mulheres', '72a46901-8741-4e6a-96fe-22f514a492da', '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('7f19353e-27a2-4191-b413-f8f1ab29aa30', 'Henrique', 17, 'Pelo Nordeste', '72a46901-8741-4e6a-96fe-22f514a492da', '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL),
+                  ('acf92575-cc55-41ab-b827-ee70d29113e0', 'Aline de Souza', 50, 'Brasil do Futuro', '72a46901-8741-4e6a-96fe-22f514a492da', '2024-10-17 08:30:00', '2024-10-17 08:30:00', NULL);
+
+            INSERT INTO voto(
+                id, id_candidato, id_eleitor, data
+            ) VALUES
+                  ('a2b593b1-bc7a-42a4-a3b7-ffdc6f49e3f0', '0e200f1b-4e0d-4666-8279-f56905bc87f1', 'e0f8b7d4-5a67-4c9b-9d56-2dfc58c5f79d', '2024-10-17 09:00:00'),
+                  ('ffab264c-2165-490c-b4f5-0e1b4ff68dc2', 'db065728-6402-490f-9fb8-d4749f547fc9', 'b87a6e7c-0e44-4721-bc42-839df24b1dbb', '2024-10-17 09:10:00'),
+                  ('c3d6a234-86ae-486f-9b04-47b802a455ec', '0c1cae83-125a-4d00-a1b9-e43bb694c325', 'f78b2d57-5435-4e57-bff2-1f052ec03ae8', '2024-10-17 09:20:00'),
+                  ('98a5397a-8a39-4640-933c-2a6d4c62d4b8', 'de8cf400-3acf-4a71-9a0a-c655b63e7a29', 'a4e8f896-bd97-4d77-9e6f-8e61b45b85f6', '2024-10-17 09:30:00'),
+                  ('b56905a2-16ab-493e-8b32-2bbf1631ee67', '58eb6c39-7c36-4340-bc7f-d81fb71a1c3d', 'c56e0795-dc4a-4cde-8ef3-c0f38d2ef97a', '2024-10-17 09:40:00'),
+                  ('d5f77f36-4628-4a7b-9676-f74f204bc5ff', '7f19353e-27a2-4191-b413-f8f1ab29aa30', 'baf22c7b-1b6d-4d67-8cd9-9e9a5117b963', '2024-10-17 09:50:00'),
+                  ('af571d5e-76d7-4975-8a9e-7b4a7e3f80d4', 'acf92575-cc55-41ab-b827-ee70d29113e0', 'f1d0e4e0-5e47-4de1-bcc6-370b0edac20b', '2024-10-17 10:00:00'),
+                  ('6bc861fe-518a-4806-b2b2-3e2e4bed84cc', 'acf92575-cc55-41ab-b827-ee70d29113e0', 'f4c8aefb-5bc2-4381-8e2e-57b05ebfbf3e', '2024-10-17 10:00:00'),
+                  ('1b4100be-1942-4507-bbeb-a4bfe7c3f5b9', 'acf92575-cc55-41ab-b827-ee70d29113e0', 'c2a16e0f-6e6f-4f58-9bce-d6f8f18e0c2b', '2024-10-17 10:00:00');
+
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>
