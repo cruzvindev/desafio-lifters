@@ -39,7 +39,7 @@ Ao ler o desafio surgiram algumas dúvidas sobre ele, que por ser um desafio ass
 
 - Outro ponto que ficou um pouco ambíguo para mim foi com relação a votação, se um eleitor poderia votar em mais de um candidato, mas que fosse de um cargo diferente(O que de fato ocorre no mundo real). Por fim, como o relacionamento entre eleitor e voto me parecia ser OneToOne eu acabei implementando a solução de modo que um eleitor só pode votar em um único candidato independentemente de seu cargo.
 
-- Enfim, uma outra característica pedida seria que a API fosse RestFull. Me intenção de início era seguir todas as constraints definidas no *Modelo de Maturidade de Richardson*, o que implicaria na utilização de HATEOAS, que eu iria implementar com Spring HATEOAS, entretanto como mencionei anteriormente, o prazo era curto e acabei focando nas principais features. Ademais, fica esse ponto como possível implementação futura, por mais que Hypermedia não seja utilizada pela massiva maioria das REST API´s.
+- Enfim, uma outra característica pedida seria que a API fosse RestFull. Minha intenção de início era seguir todas as constraints definidas no *Modelo de Maturidade de Richardson*, o que implicaria na utilização de HATEOAS, que eu iria implementar com Spring HATEOAS, entretanto como mencionei anteriormente, o prazo era curto e acabei focando nas principais features. Ademais, fica esse ponto como possível implementação futura, por mais que Hypermedia não seja utilizada pela massiva maioria das REST API´s.
 
 ## FERRAMENTAS NECESSÁRIAS PARA O PROJETO 💥
 
