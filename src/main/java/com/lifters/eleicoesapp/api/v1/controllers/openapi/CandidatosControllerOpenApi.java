@@ -27,7 +27,10 @@ public interface CandidatosControllerOpenApi {
 
     @Operation(summary = "Lista todos os candidatos disponíveis")
     public Collection<CandidatosDto> listar();
-    @Operation(summary = "Traz um relatório contendo os candidatos eleitos para cada cargo disponível")
+    @Operation(summary = "Traz um relatório contendo os candidatos eleitos para cada cargo disponível em JSON ou PDF", responses = {
+            @ApiResponse(responseCode = "200", content = {@Content(mediaType = "application/json"),
+                    @Content(mediaType = "application/pdf", schema = @Schema(type = "string", format = "binary"))})
+    })
     public List<RelatorioDto> getRelatorio();
 
     @Operation(summary = "Cadastra um novo candidato")
