@@ -1,6 +1,5 @@
 package com.lifters.eleicoesapp.domain.model.dto;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 

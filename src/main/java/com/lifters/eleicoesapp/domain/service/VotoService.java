@@ -1,6 +1,7 @@
 package com.lifters.eleicoesapp.domain.service;
 
 import com.lifters.eleicoesapp.domain.exception.EntidadeNaoEncontradaException;
+import com.lifters.eleicoesapp.domain.exception.RelatorioJasperException;
 import com.lifters.eleicoesapp.domain.model.Candidato;
 import com.lifters.eleicoesapp.domain.model.Cargo;
 import com.lifters.eleicoesapp.domain.model.Eleitor;
@@ -10,6 +11,9 @@ import com.lifters.eleicoesapp.domain.model.dto.inputs.VotoDtoInput;
 import com.lifters.eleicoesapp.domain.repository.CandidatoRepository;
 import com.lifters.eleicoesapp.domain.repository.EleitorRepository;
 import com.lifters.eleicoesapp.domain.repository.VotoRepository;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,6 +73,19 @@ public class VotoService {
         }
 
         return relatorio;
+    }
+    public byte[] gerarRelatorioPdf(){
+       try{
+           var inputStreamRelatorio = this.getClass().getResourceAsStream("/relatorios/boletim-de-urna.jasper");
+           var parametrosJasper = new HashMap<String, Object>();
+           parametrosJasper.put("REPORT_LOCALE", new Locale("pt", "BR"));
+           var fonteDados = new JRBeanCollectionDataSource(gerarRelatorio());
+
+           var jasperPrint = JasperFillManager.fillReport(inputStreamRelatorio, parametrosJasper, fonteDados);
+           return JasperExportManager.exportReportToPdf(jasperPrint);
+       } catch(Exception e){
+           throw new RelatorioJasperException("Não foi possível emitir o relatório em PDF", e);
+       }
     }
 
     @Transactional

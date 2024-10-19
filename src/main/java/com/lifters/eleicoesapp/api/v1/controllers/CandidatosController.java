@@ -12,7 +12,10 @@ import com.lifters.eleicoesapp.domain.service.VotoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -49,9 +52,21 @@ public class CandidatosController implements CandidatosControllerOpenApi {
     }
 
     @Cacheable(value = "relatorio")
-    @GetMapping("/relatorio")
+    @GetMapping(path = "/relatorio", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<RelatorioDto> getRelatorio() {
         return votoService.gerarRelatorio();
+    }
+
+    @GetMapping(path = "/relatorio", produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<byte[]> getRelatorioPdf(){
+        byte[] bytesPdf = votoService.gerarRelatorioPdf();
+        var headersResposta = new HttpHeaders();
+        headersResposta.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=boletim-urna.pdf");
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .headers(headersResposta)
+                .body(bytesPdf);
     }
 
     @PostMapping()
