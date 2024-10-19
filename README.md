@@ -22,6 +22,7 @@ Esse projeto é resolução de um desafio proposto durante o processo seletivo p
 - ✅Lombok
 - ✅Jakarta Bean Validation
 - ✅Jakarta Persistence API
+- ✅Jasper Reports
 
 ## Introdução
 
@@ -64,4 +65,9 @@ Por fim, mas não menos importante, não se esqueça de acessar o endereço http
 Por fim, gostaria de deixar meu agradecimento por estar participando desse processo seletivo, que independentemente do resultado foi muito bacana colocar minhas habilidades em prática e resolver esse desafio. Espero que gostem do que vocês irão ver aqui e espero conseguir essa oportunidade incrível de trilhar meu caminho na Lifters, seria uma grande realização para mim.🧡
 
 *Vinicius N Cruz, 17/10/2024*
+
+## ATUALIZAÇÕES 💫
+
+Olá! Acabei tomando liberdade de implementar uma pequena feature muito legal para emissão do relatório em PDF também! Para obter em PDF basta passar o cabeçalho *application/pdf* no endpoint *v1/candidatos/relatorio* , acho uma feature muito bacana, pois traz os dados organizados de maneira gráfica. Entretanto, se quiserem avaliar somente o que fiz dentro do prazo estabelecido (Quinta, 17/10 até às 19hrs) podem voltar o código até o último commit da Quinta e avaliar somente aquilo.
+
 
