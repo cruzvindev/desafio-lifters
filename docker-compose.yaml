@@ -24,3 +24,15 @@ services:
       - "6379:6379"
     networks:
       - eleicoes-api-network
+
+  eleicoes-api:
+    container_name: eleicoes-api-container
+    build: .
+    command: ["/wait-for-it.sh", "eleicoes-api-postgresql:5432", "-t", "30", "--", "java", "-jar", "api.jar"]
+    ports:
+      - "8080:8080"
+    networks:
+      - eleicoes-api-network
+    depends_on:
+      - eleicoes-api-postgresql
+      - eleicoes-api-redis
