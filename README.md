@@ -68,6 +68,6 @@ Por fim, gostaria de deixar meu agradecimento por estar participando desse proce
 
 ## ATUALIZAÇÕES 💫
 
-Olá! Acabei tomando liberdade de implementar uma pequena feature muito legal para emissão do relatório em PDF também! Para obter em PDF basta passar o cabeçalho *application/pdf* no endpoint *v1/candidatos/relatorio* , acho uma feature muito bacana, pois traz os dados organizados de maneira gráfica. Entretanto, se quiserem avaliar somente o que fiz dentro do prazo estabelecido (Quinta, 17/10 até às 19hrs) podem voltar o código até o último commit da Quinta e avaliar somente aquilo.
+Olá! Acabei tomando liberdade de implementar uma pequena feature muito legal para emissão do relatório em PDF também! Para obter em PDF basta passar o cabeçalho *application/pdf* no endpoint *v1/candidatos/relatorio* , acho uma feature muito bacana, pois traz os dados organizados de maneira gráfica. Ademais, também configurei a aplicação para rodar 100% com Docker Compose, este código está na branch "aplicacao-completa-docker-compose", se for utilizar a aplicação com o código dessa referida branch você deve executar o comando "mvn clean package" na raíz do projeto e em seguida executar "docker-compose up -d". Entretanto, se quiserem avaliar somente o que fiz dentro do prazo estabelecido (Quinta, 17/10 até às 19hrs) podem voltar o código da branch MAIN até o último commit da Quinta(17/10) e avaliar somente aquilo.
 
 
